@@ -7,7 +7,7 @@
   * : 
 
   ## Description:
-  If you love Stephen King, this is the site for you! We have built this site to include all bodies of work by Mr. King for you to peruse, comment on, and like. This is a public community where you can interact with other Stephen King lovers and share your love for horror, terror and all things that go bump in the night!
+ 
 
   ## Table of Contents
   * [Installation](#installation)
