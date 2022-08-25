@@ -2,9 +2,10 @@
   #### GitHub Page: 
 
   #### Email Address: 
-  * : 
+  * Sarah: 
   * Mary: maryleone@rocketcentral.com
-  * : 
+  * Sylvester: 
+  * Daniel : 
 
   ## Description:
  
@@ -20,23 +21,23 @@
 
 
   ## Installation
-  * Express
-  * MySQL12
-  * Sequelize
+  * React
+  * Graph QL
+  * 
   * dotenv
-  * nodemon
+  * 
   * bcrypt
   * CSS
-  * Bootstrap
-  * profanity cleanser
+  * 
+  * 
 
   ## Usage
-  * Clone repo
-  * run: npm run watch
-  * run: npm run seeds
+  * 
+  * 
+  * 
 
   # Contributors
-  Mary Leone and  and 
+ Sarah Yang, Mary Leone, Sylvester Brandon, and Daniel Ortiz
   
   # Website
   
