@@ -37,7 +37,7 @@
   * 
 
   # Contributors
- Sarah Yang, Mary Leone, Sylvester Brandon, and Daniel Ortiz
+ Sarah Yang, Mary Leone, Sylvester Brandon, and Daniel Ornelas
   
   # Website
   
@@ -49,6 +49,6 @@
   For additional questions and/or information, please go to the creator's Github at: github.com/, or email one of the above contributors.
 
   ## License
-  * Copyright &copy;2022 by , Mary Leone, and .
+  * Copyright &copy;2022 by Sarah Yang, Mary Leone, Sylvester Brandon, and Daniel Ornelas
   
 
