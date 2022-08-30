@@ -68,7 +68,7 @@ db.once('open', async () => {
         const img = await fetch(dogApi)
             .then(function (data) { return data.json(); }
             ).then(function (json) {
-                console.log(json);
+                //console.log(json);
                 return json.message;
             }
             )
@@ -80,8 +80,9 @@ db.once('open', async () => {
 
     const createdUsers = await User.collection.insertMany(userData);
 
-    // create friends
+    // create friends, cant get this to work for some reason
     for (let i = 0; i < 10; i += 1) {
+        console.log(createdUsers.ops.length)
         const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
         const { _id: userId } = createdUsers.ops[randomUserIndex];
 
