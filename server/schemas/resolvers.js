@@ -21,7 +21,7 @@ const resolvers = {
             return User.find()
                 .select('-__v -password')
                 .populate('friends')
-                .populate('image')
+                .populate('img')
         },
         // get a user by username
         user: async (parent, { username }) => {
