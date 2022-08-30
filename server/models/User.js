@@ -27,7 +27,7 @@ const userSchema = new Schema(
             trim: true
         },
         age: {
-            type: int,
+            type: Number,
             required: true,
             unique: true,
             trim: true
