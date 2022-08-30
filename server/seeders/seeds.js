@@ -48,24 +48,30 @@ db.once('open', async () => {
         //     return data.message
         // };
 
-        function dogphoto() {
-            fetch(dogApi)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    console.log(data.message);
-                    return data.message;
-                })
-                .catch(function (err) {
-                    console.log(err)
-                })
-        }
+        // function dogphoto() {
+        //     fetch(dogApi)
+        //         .then(function (response) {
+        //             return response.json();
+        //         })
+        //         .then(function (data) {
+        //             console.log(data.message);
+        //             return data.message;
+        //         })
+        //         .catch(function (err) {
+        //             console.log(err)
+        //         })
+        // }
 
         const username = faker.internet.userName();
         const email = faker.internet.email(username);
         const password = faker.internet.password();
-        const img = dogphoto();
+        const img = await fetch(dogApi)
+            .then(function (data) { return data.json(); }
+            ).then(function (json) {
+                console.log(json);
+                return json.message;
+            }
+            )
         const age = faker.mersenne.rand(85, 20);
         const aboutMe = faker.lorem.lines();
 
