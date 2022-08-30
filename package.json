@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/mleone13/project-3#readme",
   "dependencies": {
-    "concurrently": "^7.3.0"
+    "concurrently": "^7.3.0",
+    "faker": "^6.6.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
