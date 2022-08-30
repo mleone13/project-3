@@ -23,7 +23,8 @@
   "homepage": "https://github.com/mleone13/project-3#readme",
   "dependencies": {
     "concurrently": "^7.3.0",
-    "faker": "^6.6.6"
+    "faker": "^6.6.6",
+    "node-fetch": "^3.2.10"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
