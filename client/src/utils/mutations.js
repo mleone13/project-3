@@ -38,3 +38,30 @@ export const ADD_FRIEND = gql`
         }
     }
 }`
+export const REMOVE_FRIEND = gql`
+mutation removeFriend($friendId: ID!) {
+    removeFriend(friendId: $friendId) {
+      _id
+      username
+      friendCount
+      friends {
+        _id
+        username
+      }
+    }
+  }`
+export const updateAboutMe = gql`
+mutation updateAboutMe($aboutMe: String!) {
+  updateAboutMe(aboutMe: $aboutMe) {
+    _id
+    username
+    aboutMe
+    img
+    age
+    friendCount
+    friends {
+      _id
+      username
+    }
+  }
+}`
