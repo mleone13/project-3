@@ -5,7 +5,7 @@
 -   Sarah: skyang014@gmail.com
 -   Mary: maryleone@rocketcentral.com
 -   Sylvester: sylvester.brandon25@gmail.com
--   Daniel :
+-   Daniel :danielornelas01@yahoo.com
 
 ## Description:
 
