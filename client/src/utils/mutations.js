@@ -50,7 +50,7 @@ mutation removeFriend($friendId: ID!) {
       }
     }
   }`
-export const updateAboutMe = gql`
+export const UPDATE_ABOUTME = gql`
 mutation updateAboutMe($aboutMe: String!) {
   updateAboutMe(aboutMe: $aboutMe) {
     _id
