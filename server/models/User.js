@@ -29,7 +29,6 @@ const userSchema = new Schema(
         age: {
             type: Number,
             required: true,
-            unique: true,
             trim: true
         },
         aboutMe: {

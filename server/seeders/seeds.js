@@ -33,10 +33,10 @@ const fetch = (...args) =>
 const faker = require('faker');
 const db = require('../config/connection');
 const { User } = require('../models');
+const aboutMeFiller = require('../../client/public/dogpun.json')
 const dogApi = "https://dog.ceo/api/breeds/image/random"
 db.once('open', async () => {
     await User.deleteMany({});
-    console.log("here in seeds")
 
     // create user data
     const userData = [];
@@ -74,23 +74,32 @@ db.once('open', async () => {
             )
         const age = faker.mersenne.rand(85, 20);
         const aboutMe = faker.lorem.lines();
+        // console.log(aboutMeFiller.dogpun)
+        // const aboutMe = await fetch(aboutMeFiller)
+        //     .then(function (data) { return data.json(); }
+        //     ).then(function (json) {
+        //         //console.log(json);
+        //         return json.pun[0];
+        //     }
+        //     )
 
         userData.push({ username, email, password, img, age, aboutMe });
     }
 
     const createdUsers = await User.collection.insertMany(userData);
-
+    console.log("hello im here")
+    console.log(createdUsers)
     // create friends, cant get this to work for some reason
     for (let i = 0; i < 10; i += 1) {
-        console.log(createdUsers.ops.length)
-        const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-        const { _id: userId } = createdUsers.ops[randomUserIndex];
+        // console.log(createdUsers.insertedIds.length)
+        const randomUserIndex = Math.floor(Math.random() * createdUsers.insertedIds.length);
+        const userId = createdUsers.insertedIds[`${randomUserIndex}`];
 
         let friendId = userId;
 
         while (friendId === userId) {
-            const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-            friendId = createdUsers.ops[randomUserIndex];
+            const randomUserIndex = Math.floor(Math.random() * createdUsers.insertedIds.length);
+            friendId = createdUsers.insertedIds[randomUserIndex];
         }
 
         await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
