@@ -33,7 +33,7 @@ const fetch = (...args) =>
 const faker = require('faker');
 const db = require('../config/connection');
 const { User } = require('../models');
-const aboutMeFiller = require('../../client/public/dogpun.json')
+//const aboutMeFiller = require('../../client/public/dogpun.json')
 const dogApi = "https://dog.ceo/api/breeds/image/random"
 db.once('open', async () => {
     await User.deleteMany({});
@@ -88,21 +88,31 @@ db.once('open', async () => {
 
     const createdUsers = await User.collection.insertMany(userData);
     console.log("hello im here")
-    console.log(createdUsers)
+    //console.log(JSON.stringify(createdUsers.insertedIds.))
+    const keys = Object.keys(createdUsers.insertedIds)
     // create friends, cant get this to work for some reason
-    for (let i = 0; i < 10; i += 1) {
+    for (let i = 0; i < 10; i++) {
         // console.log(createdUsers.insertedIds.length)
-        const randomUserIndex = Math.floor(Math.random() * createdUsers.insertedIds.length);
+        //this code grabs a random user
+
+        const randomUserIndex = Math.floor(Math.random() * keys.length);
         const userId = createdUsers.insertedIds[`${randomUserIndex}`];
 
         let friendId = userId;
 
+        //this code grabs another random user
         while (friendId === userId) {
-            const randomUserIndex = Math.floor(Math.random() * createdUsers.insertedIds.length);
-            friendId = createdUsers.insertedIds[randomUserIndex];
-        }
+            const randomUserIndex2 = Math.floor(Math.random() * keys.length);
 
-        await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
+            friendId = createdUsers.insertedIds[`${randomUserIndex2}`];
+        }
+        try {
+
+            await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
+        }
+        catch (error) {
+            console.log("error" + error.message)
+        }
     }
 
     console.log('all done!');

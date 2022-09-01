@@ -23,7 +23,6 @@ const userSchema = new Schema(
         img: {
             type: String,
             required: true,
-            unique: true,
             trim: true
         },
         age: {
@@ -34,7 +33,7 @@ const userSchema = new Schema(
         aboutMe: {
             type: String,
             required: true,
-            unique: true,
+            unique: false,
             trim: true
         },
         friends: [
