@@ -16,7 +16,7 @@ export const ADD_USER = gql`
     mutation addUser
     ($username: String!, $password: String!, $email: String!, $img: String!, $age: Int!, $aboutMe: String!) 
     {
-    addUser(username: $username, password: $password, email: $email, img: $img, age: $age, aboutMe: $aboutMe) 
+    addUser(username: $username, password: $password, email: $email, img: $img, age: $age, aboutMe: $aboutMe, bestFeature: $bestFeature, lookingFor:$lookingFor) 
     {
     token
     user {
@@ -58,6 +58,42 @@ mutation updateAboutMe($aboutMe: String!) {
     aboutMe
     img
     age
+    bestFeature
+    lookingFor
+    friendCount
+    friends {
+      _id
+      username
+    }
+  }
+}`
+export const UPDATE_BESTFEATURE = gql`
+mutation updateBestFeature($bestFeature: String!) {
+  updateBestFeature(bestFeature: $bestFeature) {
+    _id
+    username
+    aboutMe
+    img
+    age
+    bestFeature
+    lookingFor
+    friendCount
+    friends {
+      _id
+      username
+    }
+  }
+}`
+export const UPDATE_LOOKINGFOR = gql`
+mutation updateLookingFor($lookingFor: String!) {
+  updateLookingFor(lookingFor: $lookingFor) {
+    _id
+    username
+    aboutMe
+    img
+    age
+    bestFeature
+    lookingFor
     friendCount
     friends {
       _id

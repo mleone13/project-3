@@ -12,6 +12,8 @@ const typeDefs = gql`
         img: String
         age: Int
         aboutMe: String
+        bestFeature: String
+        lookingFor: String
         friendCount: Int
         friends: [User]
     }
@@ -22,10 +24,12 @@ const typeDefs = gql`
     }
     type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!, img: String!, age: Int!, aboutMe:String!): Auth
+    addUser(username: String!, email: String!, password: String!, img: String!, age: Int!, aboutMe:String!, bestFeature: String!, lookingFor:String!): Auth
     addFriend(friendId: ID!): User
     removeFriend(friendId: ID!): User
     updateAboutMe(aboutMe:String!): User
+    updateBestFeature(bestFeature:String!): User
+    updateLookingFor(lookingFor:String!): User
     }
 
 `;

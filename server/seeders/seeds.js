@@ -74,6 +74,8 @@ db.once('open', async () => {
             )
         const age = faker.mersenne.rand(85, 20);
         const aboutMe = faker.lorem.lines();
+        const bestFeature = faker.commerce.productAdjective();
+        const lookingFor = faker.commerce.productAdjective();
         // console.log(aboutMeFiller.dogpun)
         // const aboutMe = await fetch(aboutMeFiller)
         //     .then(function (data) { return data.json(); }
@@ -83,7 +85,7 @@ db.once('open', async () => {
         //     }
         //     )
 
-        userData.push({ username, email, password, img, age, aboutMe });
+        userData.push({ username, email, password, img, age, aboutMe, bestFeature, lookingFor });
     }
 
     const createdUsers = await User.collection.insertMany(userData);

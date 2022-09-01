@@ -9,6 +9,8 @@ export const QUERY_USERS = gql`
         img
         age
         aboutMe
+        bestFeature
+        lookingFor
         friendCount
         friends {
             username
@@ -25,6 +27,8 @@ export const QUERY_USER = gql`
         img
         age
         aboutMe
+        bestFeature
+        lookingFor
         friendCount
         friends {
         username
@@ -40,6 +44,8 @@ export const QUERY_ME = gql`
         img
         age
         aboutMe
+        bestFeature
+        lookingFor
         friendCount
         friends {
         username

@@ -36,6 +36,16 @@ const userSchema = new Schema(
             unique: false,
             trim: true
         },
+        bestFeature: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        lookingFor: {
+            type: String,
+            required: true,
+            trim: true
+        },
         friends: [
             {
                 type: Schema.Types.ObjectId,

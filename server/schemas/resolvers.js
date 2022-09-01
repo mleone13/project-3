@@ -90,6 +90,33 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
+        updateBestFeature: async (parent, args, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $set: { bestFeature: args.bestFeature } },
+                    { new: true, validators: true }
+                ).populate('friends');
+
+                return updatedUser;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        updateLookingFor: async (parent, args, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $set: { lookingFor: args.lookingFor } },
+                    { new: true, validators: true }
+                ).populate('friends');
+
+                return updatedUser;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
     }
 };
 
