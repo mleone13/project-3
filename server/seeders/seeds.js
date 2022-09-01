@@ -30,9 +30,10 @@
 // const fetch = require('node-fetch');
 const fetch = (...args) =>
     import('node-fetch').then(({ default: fetch }) => fetch(...args));
-const faker = require('faker');
+//const faker = require('faker');
 const db = require('../config/connection');
 const { User } = require('../models');
+const { faker } = require('@faker-js/faker');
 //const aboutMeFiller = require('../../client/public/dogpun.json')
 const dogApi = "https://dog.ceo/api/breeds/image/random"
 db.once('open', async () => {
@@ -61,8 +62,9 @@ db.once('open', async () => {
         //             console.log(err)
         //         })
         // }
-
-        const username = faker.internet.userName();
+        // const firstName = faker.internet.firstName()
+        // const lastName = faker.internet.lastName()
+        const username = faker.internet.userName()
         const email = faker.internet.email(username);
         const password = faker.internet.password();
         const img = await fetch(dogApi)
@@ -74,8 +76,8 @@ db.once('open', async () => {
             )
         const age = faker.mersenne.rand(85, 20);
         const aboutMe = faker.lorem.lines();
-        const bestFeature = faker.commerce.productAdjective();
-        const lookingFor = faker.commerce.productAdjective();
+        const bestFeature = faker.word.adjective();
+        const lookingFor = faker.word.adjective();
         // console.log(aboutMeFiller.dogpun)
         // const aboutMe = await fetch(aboutMeFiller)
         //     .then(function (data) { return data.json(); }
