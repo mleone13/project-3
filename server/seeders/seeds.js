@@ -26,8 +26,9 @@ db.once('open', async () => {
             )
         const age = faker.mersenne.rand(85, 20);
         // const aboutMe = faker.lorem.lines();
-        console.log(dogPun)
-        const aboutMe = faker.helpers.arrayElement(dogPun.pun);
+        //console.log(dogPun[0].pun)
+        const aboutMe = faker.helpers.arrayElement(dogPun).pun;
+        console.log(aboutMe)
         const bestFeature = faker.word.adjective();
         const lookingFor = faker.word.adjective();
 
