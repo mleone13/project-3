@@ -12,14 +12,14 @@ const Home = () => {
     <main>
       <div className="flex-row justify-space-between">
         <div className="col-12 mb-3">
-          {loading ? (
+          {/* {loading ? (
             <div>Loading...</div>
           ) : (
             <FriendList
               users={users}
               title="Some Feed for Thought(s)..."
             />
-          )}
+          )} */}hello from
         </div>
       </div>
     </main>

@@ -22,12 +22,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
-
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
-
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
   return {
@@ -38,6 +32,12 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -46,28 +46,29 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-              <Route 
-                path="/" 
-                element={<Home />} 
+              <Route
+                path="/"
+                element={<Home />}
               />
-              <Route 
-                path="/login" 
-                element={<Login />} 
+              <Route
+                path="/login"
+                element={<Login />}
               />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
+              <Route
+                path="/signup"
+                element={<Signup />}
               />
-              <Route 
-                path="/profile" 
-                element={<Profile />} 
+              <Route
+                path="/profile"
+                element={<Profile />}
               />
-              <Route 
-                path="*" 
-                element={<NoMatch />} 
+              <Route
+                path="*"
+                element={<NoMatch />}
               />
             </Routes>
           </div>
+          hello from app js
           <Footer />
         </div>
       </Router>
