@@ -22,10 +22,19 @@
   },
   "homepage": "https://github.com/mleone13/project-3#readme",
   "dependencies": {
-    "concurrently": "^7.3.0",
-    "node-fetch": "^3.2.10"
+    "@apollo/client": "^3.6.9",
+    "apollo-server-express": "^3.10.2",
+    "bcrypt": "^5.0.1",
+    "bootstrap": "^5.2.0",
+    "express": "^4.18.1",
+    "graphql": "^16.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.4",
+    "node-fetch": "^3.2.10",
+    "react-bootstrap": "^2.5.0"
   },
   "devDependencies": {
+    "concurrently": "^7.3.0",
     "faker": "^5.5.3",
     "nodemon": "^2.0.19"
   }
