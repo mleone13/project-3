@@ -1,6 +1,5 @@
-
-import './App.css';
 import React from 'react';
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -18,6 +17,9 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavTabs from './components/NavTab';
+import AuthModal from './components/AuthModal';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -42,7 +44,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        {/* <div className="flex-column justify-flex-start min-100-vh"> */}
+        <div>
           <Header />
           <div className="container">
             <Routes>
@@ -52,12 +55,9 @@ function App() {
               />
               <Route
                 path="/login"
-                element={<Login />}
+                element={<AuthModal />}
               />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
+              
               <Route
                 path="/profile"
                 element={<Profile />}
@@ -68,9 +68,8 @@ function App() {
               />
             </Routes>
           </div>
-          hello from app js
-          <Footer />
         </div>
+          {/* <Footer /> */}
       </Router>
     </ApolloProvider>
   );

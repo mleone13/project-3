@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 
+// import './style.css';
+
 const Header = () => {
   const logout = event => {
     event.preventDefault();
@@ -27,7 +29,6 @@ const Header = () => {
           ) : (
             <>
               <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
             </>
           )}
         </nav>
