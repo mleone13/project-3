@@ -34,9 +34,6 @@ import { QUERY_USERS } from '../utils/queries';
 // export default Home;
 
 
-
-
-
 const Home = () => {
     const [showModal, setShowModal] = useState(false)
     const [isSignUp, setIsSignUp] = useState(true)
@@ -63,12 +60,14 @@ const Home = () => {
                 showModal={showModal}
                 setIsSignUp={setIsSignUp}
             />
+            
             <div className="home">
-                <h1 className="primary-title">Swipe Right®</h1>
+                <h1 className="primary-title">Swipe Right</h1>
+                <p>For dogs who don't want to be alone </p>
+                    
                 <button className="primary-button" onClick={handleClick}>
-                    {authToken ? 'Signout' : 'Create Account'}
+                    {authToken ? 'Signout' : 'Sign Up'}
                 </button>
-
 
                 {showModal && (
                     <AuthModal setShowModal={setShowModal} isSignUp={isSignUp}/>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 
+//the functionality in this page needs to link up with Home.js
 
 const Header = () => {
   const logout = event => {
@@ -11,10 +12,10 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-secondary mb-4 py-2 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
+    <header className="mb-1 py-2 flex-row align-center">
+      <div className="header">
         <Link to="/">
-          <h1>PupOrPass</h1>
+          <h1>Plenty of Pups</h1>
         </Link>
 
         <nav className="text-center">
@@ -27,13 +28,14 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
+              {/* <Link to="/login">Login</Link> */}
             </>
           )}
         </nav>
       </div>
-    </header>
+      </header>
   );
 };
+
 
 export default Header;

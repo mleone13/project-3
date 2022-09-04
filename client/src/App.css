@@ -39,17 +39,21 @@ h2 {
 
 
 /*-------- Home page --------*/
+
+.header {
+  margin-right: 80%;
+  position: relative;
+}
 .overlay {
-  width: 80vw;
+  /* width: 82vw; */
   height: 100vh;
-  margin: 0 auto;
-  position: fixed;
+  
   background: linear-gradient(
           to bottom,
           rgba(0, 0, 0, 0.65) 0%,
           rgba(0, 0, 0, 0) 100%
-  )
-  
+  ), url(../src/components/images/dog\ backround.webp)
+
 }
 
 
@@ -208,4 +212,19 @@ nav .logo-container .logo {
 
 .img-container img {
   width: 100%;
+}
+
+/*-------- Chat Display --------*/
+.chat-display,
+.matches-display {
+    padding: 20px;
+    height: 60vh;
+    overflow-y: auto;
+}
+
+/*-------- Chat Input --------*/
+.chat-input {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
