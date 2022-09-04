@@ -41,6 +41,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
+    
     <ApolloProvider client={client}>
       <Router>
         {/* <div className="flex-column justify-flex-start min-100-vh"> */}
@@ -64,12 +65,15 @@ function App() {
                 path="*"
                 element={<NoMatch />}
               />
+                <Route path="/" element={<Home/>}/>
+                {authToken && <Route path="/dashboard" element={<Dashboard/>}/>}
+                {authToken && <Route path="/onboarding" element={<OnBoarding/>}/>}
             </Routes>
-          </div>
           {/* <Footer /> */}
         </div>
       </Router>
     </ApolloProvider>
+    
   );
 }
 export default App;

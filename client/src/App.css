@@ -27,14 +27,14 @@ h2 {
   color: rgb(255,255,255);
   text-transform: uppercase;
   font-size: 15px;
-  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  background: linear-gradient(45deg, rgb(48, 168, 254), rgb(56, 54, 54));
   padding: 12px 30px;
   border-radius: 30px;
   border: none;
 }
 
 .primary-button:hover {
-  background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  background: linear-gradient(260deg, rgb(48, 168, 254), rgb(56, 54, 54));
 }
 
 
