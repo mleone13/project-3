@@ -19,6 +19,13 @@ import Signup from './pages/Signup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavTabs from './components/NavTab';
 import AuthModal from './components/AuthModal';
+import ChatContainer from './components/ChatContainer';
+import Dashboard from './pages/Dashboard';
+import MatchesDisplay from './components/MatchesDisplay';
+import ChatHeader from './components/ChatHeader';
+import ChatDisplay from './components/ChatDisplay';
+
+
 
 
 const httpLink = createHttpLink({
@@ -61,6 +68,10 @@ function App() {
               <Route
                 path="/profile"
                 element={<Profile />}
+              />
+              <Route
+                path="/dashboard"
+                element={<Dashboard/>}
               />
               <Route
                 path="*"
