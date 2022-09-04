@@ -56,17 +56,17 @@ const Home = () => {
 
     return (
         <div className="overlay">
-            {/* <NavTab
+            <NavTab
                 authToken={authToken}
                 minimal={false}
                 setShowModal={setShowModal}
                 showModal={showModal}
                 setIsSignUp={setIsSignUp}
-            /> */}
+            />
             <div className="home">
-                <h1 className="primary-title">Swipe Right®</h1>
+                <h1 className="primary-title">PUPorPASS®</h1>
                 <button className="primary-button" onClick={handleClick}>
-                    {authToken ? 'Signout' : 'Create Account'}
+                    {authToken ? 'Signout' : 'Sign Up'}
                 </button>
 
 
