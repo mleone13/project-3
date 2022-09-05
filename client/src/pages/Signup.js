@@ -65,6 +65,8 @@ const Signup = () => {
         variables: { ...useState },
       });
 
+      console.log (data)
+      
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);

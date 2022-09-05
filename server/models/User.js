@@ -22,28 +22,28 @@ const userSchema = new Schema(
         },
         img: {
             type: String,
-            required: true,
+            // required: true,
             trim: true
         },
         age: {
             type: Number,
-            required: true,
+            // required: true,
             trim: true
         },
         aboutMe: {
             type: String,
-            required: true,
+            // required: true,
             unique: false,
             trim: true
         },
         bestFeature: {
             type: String,
-            required: true,
+            // required: true,
             trim: true
         },
         lookingFor: {
             type: String,
-            required: true,
+            // required: true,
             trim: true
         },
         friends: [
