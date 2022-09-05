@@ -9,7 +9,7 @@ const Dashboard = () => {
     const db = [
         {
           name: 'Richard Hendricks',
-          url: 'https://unsplash.com/images/animals/dog'
+          img: './image'
         },
         {
           name: 'Erlich Bachman',
