@@ -12,8 +12,8 @@ const Header = () => {
   };
 
   return (
-    <header className="mb-1 py-2 flex-row align-center">
-      <div className="header">
+    <nav className="primary-header">
+      <div>
         <Link to="/">
           <h1>Plenty of Pups</h1>
         </Link>
@@ -33,7 +33,7 @@ const Header = () => {
           )}
         </nav>
       </div>
-      </header>
+      </nav>
   );
 };
 

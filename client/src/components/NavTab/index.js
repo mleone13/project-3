@@ -1,7 +1,6 @@
 import React from 'react';
 
-import whiteLogo from "../images/dog_logo.png";
-import colorLogo from "../images/dog_logo.png";
+
 
 const NavTab = ({ authToken, minimal, setShowModal, showModal, setIsSignUp }) => {
   const handleClick = () => {
@@ -12,11 +11,7 @@ const NavTab = ({ authToken, minimal, setShowModal, showModal, setIsSignUp }) =>
   return (
     <nav>
       <div className="logo-container">
-        <img
-          className="logo"
-          src={minimal ? colorLogo : whiteLogo}
-          alt="logo"
-        />
+      
       </div>
       {!authToken && !minimal && (
         <button
@@ -27,6 +22,8 @@ const NavTab = ({ authToken, minimal, setShowModal, showModal, setIsSignUp }) =>
           Log in
         </button>
       )}
+
+      {/* <button className='nav-button'>Log out</button> */}
     </nav>
   );
 };

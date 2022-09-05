@@ -1,21 +1,41 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
 
-
+import Auth from '../../utils/auth';
 
 
 const AuthModal = ({ setShowModal,  isSignUp }) => {
-    const [email, setEmail] = useState(null)
-    const [password, setPassword] = useState(null)
-    const [confirmPassword, setConfirmPassword] = useState(null)
-    const [error, setError] = useState(null)
+    // const [email, setEmail] = useState(null)
+    // const [password, setPassword] = useState(null)
+    // const [confirmPassword, setConfirmPassword] = useState(null)
+    // const [error, setError] = useState(null)
     const [ cookies, setCookie, removeCookie] = useCookies(null)
+
+    const [formState, setFormState] = useState({
+        username: 'mleone',
+        password: 'Soccer',
+        email: 'marykleone@gmail.com',
+        img: 'https://via.placeholder.io/150',
+        age: 31,
+        aboutMe: 'cool',
+      });
+      const [addUser, { error }] = useMutation(ADD_USER);
 
     let navigate = useNavigate()
 
-    console.log(email, password, confirmPassword)
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+    
+        setFormState({
+          ...formState,
+          [name]: value,
+        });
+      };
+
+   
 
 
     const handleClick = () => {
@@ -24,24 +44,36 @@ const AuthModal = ({ setShowModal,  isSignUp }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        
 
         try {
-            if (isSignUp && (password !== confirmPassword)) {
-                setError('Passwords need to match!')
-                return
-            }
+            // if (isSignUp && (password !== confirmPassword)) {
+            //     setError('Passwords need to match!')
+            //     return
+            // }
 
-            const response = await axios.post(`http://localhost:3000/${isSignUp ? 'signup' : 'login'}`, { email, password })
-            console.log(response);
+            console.log(formState);
+
+            const { data } = await addUser({
+                variables: { ...formState },
+              });
+
+
+              Auth.login(data.addUser.token);
             
-            setCookie('AuthToken', response.data.token)
-            setCookie('UserId', response.data.userId)
+        
 
-            const success = response.status === 201
-            if (success && isSignUp) navigate ('/onboarding')
-            if (success && !isSignUp) navigate ('/dashboard')
+            // const response = await axios.post(`http://localhost:3000/${isSignUp ? 'signup' : 'login'}`, { email, password })
+            // console.log(response);
+            
+            // setCookie('AuthToken', response.data.token)
+            // setCookie('UserId', response.data.userId)
 
-            window.location.reload()
+            // const success = response.status === 201
+            // if (success && isSignUp) navigate ('/onboarding')
+            // if (success && !isSignUp) navigate ('/dashboard')
+
+            // window.location.reload()
 
         } catch (error) {
             console.log(error)
@@ -53,16 +85,30 @@ const AuthModal = ({ setShowModal,  isSignUp }) => {
         <div className="auth-modal">
             <div className="close-icon" onClick={handleClick}>ⓧ</div>
 
+
             <h2>{isSignUp ? 'SIGN UP': 'LOG IN'}</h2>
             <p>By clicking Log In, you agree to our terms. Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
+            
             <form onSubmit={handleSubmit}>
+            <input
+                
+                    type="username"
+                    id="username"
+                    name="username"
+                    placeholder="username"
+                    required={true}
+                    value={formState.username}
+                    onChange={handleChange}
+                />
+                
                 <input
                     type="email"
                     id="email"
                     name="email"
                     placeholder="email"
                     required={true}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={formState.email}
+                    onChange={handleChange}
                 />
                 <input
                     type="password"
@@ -70,7 +116,8 @@ const AuthModal = ({ setShowModal,  isSignUp }) => {
                     name="password"
                     placeholder="password"
                     required={true}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={formState.password}
+                    onChange={handleChange}
                 />
                 {isSignUp && <input
                     type="password"
@@ -78,10 +125,11 @@ const AuthModal = ({ setShowModal,  isSignUp }) => {
                     name="password-check"
                     placeholder="confirm password"
                     required={true}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    // line could be wrong
+                    // onChange={(e) => setConfirmPassword(e.target.value)}
                 />}
                 <input className="secondary-button" type="submit"/>
-                <p>{error}</p>
+                {/* <p>{error}</p> */}
             </form>
 
             <hr/>

@@ -60,7 +60,7 @@ const Onboarding = () => {
             />
 
             <div className="onboarding">
-                <h2>CREATE ACCOUNT</h2>
+                <h2>UPDATE ACCOUNT</h2>
 
                 <form onSubmit={handleSubmit}>
                     <section>
@@ -75,7 +75,7 @@ const Onboarding = () => {
                             onChange={handleChange}
                         />
 
-                        <label>Birthday</label>
+                        {/* <label>Birthday</label>
                         <div className="multiple-input-container">
                             <input
                                 id="dob_day"
@@ -106,7 +106,7 @@ const Onboarding = () => {
                                 value={formData.dob_year}
                                 onChange={handleChange}
                             />
-                        </div>
+                        </div> */}
 
                         <label>Gender</label>
                         <div className="multiple-input-container">

@@ -2,34 +2,34 @@ import TinderCard from "react-tinder-card";
 import { useState } from "react";
 import ChatContainer from "../components/ChatContainer"
 import { useCookies } from "react-cookie";
-import axios from "axios";
+
 
 const Dashboard = () => {
 
-    const db = [
+    const character = [
         {
-          name: 'Richard Hendricks',
-          img: './image'
+          name: 'Max',
+          url: 'https://i.imgur.com/HfAuR39.png'
         },
         {
-          name: 'Erlich Bachman',
-          url: './img/erlich.jpg'
+          name: 'Tammy',
+          url: 'https://www.pexels.com/search/dog/'
         },
         {
-          name: 'Monica Hall',
-          url: './img/monica.jpg'
+          name: 'Frank',
+          url: 'https://www.pexels.com/search/dog/'
         },
         {
-          name: 'Jared Dunn',
-          url: './img/jared.jpg'
+          name: 'Mini',
+          url: 'https://www.pexels.com/search/dog/'
         },
         {
-          name: 'Dinesh Chugtai',
-          url: './img/dinesh.jpg'
+          name: 'Zach',
+          url: 'https://i.imgur.com/HfAuR39.png'
         }
       ]
 
-    const characters = db
+
     const [lastDirection, setLastDirection] = useState()
   
     const swiped = (direction, nameToDelete) => {
@@ -44,12 +44,16 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             <ChatContainer/>
-            <div className= "swi-per-container">
+            <div className= "swiper-container">
                 <div className="card-container">
 
-        {characters.map((character) =>
-          <TinderCard className='swipe' key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-            <div style={{ backgroundImage: 'url(' + character.url + ')' }} className='card'>
+        {character.map((character) =>
+          <TinderCard 
+          className='swipe' key={character.name} 
+          onSwipe={(dir) => swiped(dir, character.name)} 
+          onCardLeftScreen={() => outOfFrame(character.name)}>
+          <div style={{ backgroundImage: 'url(' + character.url + ')' }} 
+            className='card'>
               <h3>{character.name}</h3>
             </div>
           </TinderCard>

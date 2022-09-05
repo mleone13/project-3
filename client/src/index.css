@@ -29,6 +29,16 @@ h2 {
     border: none;
 }
 
+.primary-header{
+  color: rgb(255,255,255);
+    text-transform: uppercase;
+    font-size: 15px;
+    background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
+    padding: 12px 30px;
+    border-radius: 30px;
+    border: none;
+}
+
 .primary-button:hover {
     background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
 }
@@ -93,9 +103,10 @@ margin: 20px 20px;
 
 /*-------- Home page --------*/
 .overlay {
-  width: 80vw;
-  height: 100vh;
-  position: fixed;
+  /* width: 83vw; */
+  height: 100vh; 
+  background-size: 100% auto ;
+  position: relative;
   background: linear-gradient(
           to bottom,
           rgba(0, 0, 0, 0.65) 0%,
@@ -141,9 +152,9 @@ margin: 20px 20px;
 
 
 /*-------- OnBoarding Page --------*/
-.onboarding {
+/* .onboarding {
   border-top: solid 1px rgb(213, 213, 213);
-}
+} */
 
 .onboarding form {
   display: flex;
@@ -225,7 +236,7 @@ margin: 20px 20px;
   justify-content: space-between;
 }
 
-.dashboard .swipe-container {
+.dashboard .swiper-container {
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -236,30 +247,42 @@ margin: 20px 20px;
 
 .swipe {
   position: absolute;
+  margin: 3%;
+  height: 500px;
 }
 
 .dashboard .card-container {
   width: 400px;
+  max-width: 260px;
   height: 650px;
 }
 
 .card {
-  width: 400px;
-  height: 650px;
-  border-radius: 30px;
-  background-size: cover;
+  position: relative;
+  background-color: #fff;
+  width: 80vw;
+  max-width: 400px;
+  height: 800px;
+  border-radius: 20px;
+  padding: 30%;
+  /* background-size: cover; */
   background-position: center;
+}
+
+.cardContent {
+  width: 100%;
+  height: 100%;
 }
 
 .card h3 {
   margin-top: 0;
 }
 
-.dashboard .swipe-info {
+ .dashboard .swipe-info {
   position: absolute;
   bottom: 0;
   padding: 10px;
-}
+} 
 
 
 
@@ -269,12 +292,13 @@ margin: 20px 20px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
   rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   width: 30%;
+  margin: 3%;
   text-align: left;
   z-index: 1;
 }
 
 .chat-container .chat-container-header {
-  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  background: linear-gradient(45deg, rgb(75, 57, 173), rgb(255, 89, 64));
   height: 100px;
   display: flex;
   justify-content: space-between;
