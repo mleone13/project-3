@@ -1,4 +1,6 @@
 const express = require('express');
+const { MongoClient } = require('mongodb');
+const uri = 'mongodb+srv://DanielOrnelas01:cloudstuff32@cluster0.zxsxnfg.mongodb.net/?retryWrites=true&w=majority'
 const path = require('path');
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
@@ -16,6 +18,10 @@ const server = new ApolloServer({
 });
 
 const app = express();
+
+app.get('/signup', (req, res) => {
+    res.json()
+})
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
