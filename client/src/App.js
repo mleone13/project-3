@@ -9,23 +9,18 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Header from './components/Header';
-import Footer from './components/Footer';
+
 import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import NavTabs from './components/NavTab';
-import AuthModal from './components/AuthModal';
-import ChatContainer from './components/ChatContainer';
 import Dashboard from './pages/Dashboard';
-import MatchesDisplay from './components/MatchesDisplay';
-import ChatHeader from './components/ChatHeader';
-import ChatDisplay from './components/ChatDisplay';
+import AuthModal from './components/AuthModal';
+import Header from './components/Header';
+import Onboarding from './pages/Onboarding';
 
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const httpLink = createHttpLink({
@@ -73,6 +68,10 @@ function App() {
                 path="/dashboard"
                 element={<Dashboard/>}
               />
+               <Route
+                path="/onboarding"
+                element={<Onboarding/>}
+              />
               <Route
                 path="*"
                 element={<NoMatch />}
@@ -80,7 +79,6 @@ function App() {
             </Routes>
           </div>
         </div>
-          {/* <Footer /> */}
       </Router>
     </ApolloProvider>
   );

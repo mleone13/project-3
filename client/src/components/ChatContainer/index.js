@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import ChatHeader from '../ChatHeader'
-import MatchesDisplay from '../MatchesDisplay'
-import ChatDisplay from '../ChatDisplay'
+import ChatHeader from '../ChatHeader';
+import MatchesDisplay from '../MatchesDisplay';
+import ChatDisplay from '../ChatDisplay';
 
 const ChatContainer = ({ user }) => {
     const [ clickedUser, setClickedUser ] = useState(null)
@@ -22,4 +22,4 @@ const ChatContainer = ({ user }) => {
     )
 }
 
-export default ChatContainer
+export default ChatContainer;
