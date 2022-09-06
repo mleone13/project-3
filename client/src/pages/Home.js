@@ -1,19 +1,14 @@
-import React, {useState}from 'react';
+import Nav from '../components/NavTab'
+import AuthModal from "../components/AuthModal"
+import {useState} from 'react'
 import {useCookies} from "react-cookie"
-import FriendList from '../components/FriendList';
-import NavTab from '../components/NavTab';
-import AuthModal from '../components/AuthModal';
-
-import { useQuery } from '@apollo/client';
-import { QUERY_USERS } from '../utils/queries';
-
 
 const Home = () => {
     const [showModal, setShowModal] = useState(false)
     const [isSignUp, setIsSignUp] = useState(true)
     const [cookies, setCookie, removeCookie] = useCookies(['user'])
     const authToken = cookies.AuthToken
-    
+
     const handleClick = () => {
         if (authToken) {
             removeCookie('UserId', cookies.UserId)
@@ -27,15 +22,13 @@ const Home = () => {
 
     return (
         <div className="overlay">
-            
-            <NavTab
+            <Nav
                 authToken={authToken}
                 minimal={false}
                 setShowModal={setShowModal}
                 showModal={showModal}
                 setIsSignUp={setIsSignUp}
-                />
-
+            />
             <div className="home">
                 <h1 className="primary-title">Swipe Right®</h1>
                 <button className="primary-button" onClick={handleClick}>
@@ -45,13 +38,12 @@ const Home = () => {
 
                 {showModal && (
                     <AuthModal setShowModal={setShowModal} isSignUp={isSignUp}/>
-                    )}
+                )}
             </div>
         </div>
     )
 }
-
-export default Home;
+export default Home
 
     // const Home = () => {
     //   const { loading, data } = useQuery(QUERY_USERS);

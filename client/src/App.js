@@ -1,89 +1,28 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
 
+import Home from './pages/Home'
+import Dashboard from './pages/Dashboard'
+import OnBoarding from './pages/Onboarding'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import {useCookies} from 'react-cookie'
 
-import Home from './pages/Home';
-import NoMatch from './pages/NoMatch';
-import Login from './pages/Login';
-import Profile from './pages/Profile';
-import Signup from './pages/Signup';
-import Dashboard from './pages/Dashboard';
-import AuthModal from './components/AuthModal';
-import Header from './components/Header';
-import Onboarding from './pages/Onboarding';
+const App = () => {
+    const [cookies, setCookie, removeCookie] = useCookies(['user'])
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+    const authToken = cookies.AuthToken
 
-
-const httpLink = createHttpLink({
-  uri: '/graphql',
-});
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
-
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
-
-
-function App() {
-  return (
-    <ApolloProvider client={client}>
-      <Router>
-        {/* <div className="flex-column justify-flex-start min-100-vh"> */}
-        <div>
-          <Header />
-          <div className="container">
+    return (
+        <BrowserRouter>
             <Routes>
-              <Route
-                path="/"
-                element={<Home />}
-              />
-              <Route
-                path="/login"
-                element={<AuthModal />}
-              />
-              
-              <Route
-                path="/profile"
-                element={<Profile />}
-              />
-              <Route
-                path="/dashboard"
-                element={<Dashboard/>}
-              />
-               <Route
-                path="/onboarding"
-                element={<Onboarding/>}
-              />
-              <Route
-                path="*"
-                element={<NoMatch />}
-              />
+                <Route path="/" element={<Home/>}/>
+                {authToken && <Route path="/dashboard" element={<Dashboard/>}/>}
+                {authToken && <Route path="/onboarding" element={<OnBoarding/>}/>}
+
             </Routes>
-          </div>
-        </div>
-      </Router>
-    </ApolloProvider>
-  );
+        </BrowserRouter>
+    )
 }
-export default App;
+
+export default App
 
 
 
