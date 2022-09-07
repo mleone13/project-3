@@ -1,5 +1,5 @@
 import Nav from '../components/NavTab'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useCookies } from "react-cookie"
 // import FriendList from '../components/FriendList';
 // import NavTab from '../components/NavTab';
@@ -10,6 +10,12 @@ import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth';
 import { QUERY_ME } from '../utils/queries'
 import '../index.css';
+import Onboarding from './Onboarding';
+import Login from './Login';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+
 
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import {
@@ -20,8 +26,9 @@ import '../index.css';
 // import { setContext } from '@apollo/client/link/context';
 
 const Home = () => {
-  const [showModal, setShowModal] = useState(false)
+  //const [showModal, setShowModal] = useState(false)
   const [isSignUp, setIsSignUp] = useState(true)
+  const [modalShow, setModalShow] = React.useState(false);
   const loggedIn = Auth.loggedIn();
   const { userData } = useQuery(QUERY_ME);
   // const [cookies, setCookie, removeCookie] = useCookies(['user'])
@@ -45,39 +52,40 @@ const Home = () => {
   //     cache: new InMemoryCache(),
   //   });
 
-  const handleClick = () => {
-    // if (authToken) {
-    //   removeCookie('UserId', cookies.UserId)
-    //   removeCookie('AuthToken', cookies.AuthToken)
-    //   window.location.reload()
-    //   return
-    // }
-    if (Auth.loggedIn()) {
-
-    }
-    setShowModal(true)
-    setIsSignUp(true)
-  }
+  // const handleClick = () => {
+  //   // if (authToken) {
+  //   //   removeCookie('UserId', cookies.UserId)
+  //   //   removeCookie('AuthToken', cookies.AuthToken)
+  //   //   window.location.reload()
+  //   //   return
+  //   // }
+  //   if (Auth.loggedIn()) {
+  //     return <Onboarding />
+  //   }
+  //   setShowModal(true)
+  //   setIsSignUp(true)
+  // }
 
   return (
     <div className="overlay">
-      <Nav
-        // authToken={authToken}
-        minimal={false}
-        setShowModal={setShowModal}
-        showModal={showModal}
-        setIsSignUp={setIsSignUp}
+      <Button variant="primary" onClick={() => setModalShow(true)}>
+        Launch vertically centered modal/Login
+      </Button>
+
+      <Login
+        show={modalShow}
+        onHide={() => setModalShow(false)}
       />
       <div className="home">
         <h1 className="primary-title">Find Your Forever Paws®</h1>
-        <button className="primary-button" onClick={handleClick}>
-          {Auth.loggedIn ? 'Signout' : 'Create Account'}
+        <button className="primary-button" >
+          {loggedIn ? 'Signout' : 'Create Account'}
         </button>
 
 
-        {showModal && (
+        {/* {showModal && (
           <AuthModal setShowModal={setShowModal} isSignUp={isSignUp} />
-        )}
+        )} */}
       </div>
     </div>
   )

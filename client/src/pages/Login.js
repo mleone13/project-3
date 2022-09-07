@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import Auth from '../utils/auth';
 
 const Login = (props) => {
@@ -40,40 +41,57 @@ const Login = (props) => {
     };
 
     return (
-        <main className="flex-row justify-center mb-4">
-            <div className="col-12 col-md-6">
-                <div className="card">
-                    <h4 className="card-header"></h4>
-                    <div className="card-body">
-                        <form onSubmit={handleFormSubmit}>
-                            <input
-                                className="form-input"
-                                placeholder="Your email"
-                                name="email"
-                                type="email"
-                                id="email"
-                                value={formState.email}
-                                onChange={handleChange}
-                            />
-                            <input
-                                className="form-input"
-                                placeholder="******"
-                                name="password"
-                                type="password"
-                                id="password"
-                                value={formState.password}
-                                onChange={handleChange}
-                            />
-                            <button className="btn d-block w-100" type="submit">
-                                Submit
-                            </button>
-                        </form>
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Login
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <main className="flex-row justify-center mb-4">
+                    <div className="col-12 col-md-6">
+                        <div className="card">
+                            <h4 className="card-header">Paw-tienly waiting for you!</h4>
+                            <div className="card-body">
+                                <form onSubmit={handleFormSubmit}>
+                                    <input
+                                        className="form-input"
+                                        placeholder="Your email"
+                                        name="email"
+                                        type="email"
+                                        id="email"
+                                        value={formState.email}
+                                        onChange={handleChange}
+                                    />
+                                    <input
+                                        className="form-input"
+                                        placeholder="******"
+                                        name="password"
+                                        type="password"
+                                        id="password"
+                                        value={formState.password}
+                                        onChange={handleChange}
+                                    />
+                                    <button className="btn d-block w-100" type="submit">
+                                        Submit
+                                    </button>
+                                </form>
 
-                        {error && <div>Login failed</div>}
+                                {error && <div>Login failed</div>}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </main>
+                </main>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={props.onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
     );
 };
 

@@ -19,6 +19,7 @@ import OnBoarding from './pages/Onboarding'
 import NoMatch from './pages/NoMatch'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const httpLink = createHttpLink({
     uri: '/graphql',
