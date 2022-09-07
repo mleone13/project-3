@@ -1,23 +1,20 @@
-<<<<<<< HEAD
-=======
 
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+//import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
+    createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
->>>>>>> 7b8579424693c436f9e4cc93e6951b216d17c540
 
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import OnBoarding from './pages/Onboarding'
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import {useCookies} from 'react-cookie'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 
 const App = () => {
     const [cookies, setCookie, removeCookie] = useCookies(['user'])
@@ -27,9 +24,9 @@ const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home/>}/>
-                {authToken && <Route path="/dashboard" element={<Dashboard/>}/>}
-                {authToken && <Route path="/onboarding" element={<OnBoarding/>}/>}
+                <Route path="/" element={<Home />} />
+                {authToken && <Route path="/dashboard" element={<Dashboard />} />}
+                {authToken && <Route path="/onboarding" element={<OnBoarding />} />}
 
             </Routes>
         </BrowserRouter>

@@ -1,5 +1,5 @@
 import Nav from '../components/NavTab'
-import AuthModal from "../components/AuthModal"
+//import AuthModal from "../components/AuthModal"
 import {useState} from 'react'
 import {useCookies} from "react-cookie"
 import FriendList from '../components/FriendList';

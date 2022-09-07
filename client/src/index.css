@@ -261,8 +261,6 @@ margin: 20px 20px;
   width: 100%
 }
 
-
-
 /*-------- Dashboard  --------*/
 .dashboard {
   display: flex;
@@ -278,15 +276,15 @@ margin: 20px 20px;
   height: 100vh;
 }
 
+
 .swipe {
   position: absolute;
-  margin: 3%;
-  height: 500px;
 }
+
 
 .dashboard .card-container {
   width: 400px;
-  max-width: 260px;
+  /* max-width: 260px; */
   height: 650px;
 }
 
@@ -296,10 +294,16 @@ margin: 20px 20px;
   width: 80vw;
   max-width: 400px;
   height: 800px;
-  border-radius: 20px;
-  padding: 30%;
-  /* background-size: cover; */
+  /* border-radius: 20px; */
+  padding: 50%;
+  background-size: cover;
   background-position: center;
+}
+
+.cardContainer {
+  width: 90vw;
+  max-width: 260px;
+  height: 300px;
 }
 
 .cardContent {
@@ -308,7 +312,10 @@ margin: 20px 20px;
 }
 
 .card h3 {
-  margin-top: 0;
+  position: absolute;
+  bottom: 0;
+  margin: 10px;
+  color: #fff;
 }
 
  .dashboard .swipe-info {
@@ -387,134 +394,3 @@ margin: 20px 20px;
   flex-direction: column;
 }
 
-.onboarding form input[type=radio] {
-  display: none;
-}
-
-.onboarding form input[type=number] {
-  width: 10%;
-}
-
-.onboarding form input[type=radio]:checked + label {
-  border: solid 2px rgb(221, 39, 22);
-}
-
-.onboarding form input[type=submit]:hover {
-  background-color: rgb(235, 235, 235);
-}
-
-.onboarding form input[type=submit]:active {
-  background-color: rgb(226, 115, 115);
-}
-
-.onboarding form .photo-container img {
-  width: 100%
-}
-
-/*-------- Dashboard  --------*/
-.dashboard {
-  display: flex;
-  justify-content: space-between;
-}
-
-.dashboard .swipe-container {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.swipe {
-  position: absolute;
-}
-
-.dashboard .card-container {
-  width: 400px;
-  height: 650px;
-}
-
-.card {
-  width: 400px;
-  height: 650px;
-  border-radius: 30px;
-  background-size: cover;
-  background-position: center;
-}
-
-.card h3 {
-  margin-top: 0;
-}
-
-.dashboard .swipe-info {
-  position: absolute;
-  bottom: 0;
-  padding: 10px;
-}
-
-/*-------- Chat Container --------*/
-.chat-container {
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-  rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  width: 30%;
-  text-align: left;
-  z-index: 1;
-}
-
-.chat-container .chat-container-header {
-  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chat-container .option {
-  border: none;
-  background-color: rgb(255, 255, 255);
-  border-bottom: solid 4px rgb(243, 33, 33);
-  font-size: 20px;
-  margin: 2px;
-  padding: 10px;
-}
-
-.chat-container .option:disabled {
-  border-bottom: solid 4px rgb(187, 187, 187);
-}
-
-.chat-container .profile,
-.chat-container .log-out-icon {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  color: rgb(255, 255, 255);
-}
-
-.img-container {
-  height: 30px;
-  width: 30px;
-  border-radius: 15px;
-  overflow: hidden;
-  margin: 10px;
-}
-
-.img-container img {
-  width: 100%;
-}
-
-/*-------- Chat Display --------*/
-.chat-display,
-.matches-display {
-  padding: 20px;
-  height: 60vh;
-  overflow-y: auto;
-}
-
-/*-------- Chat Input --------*/
-.chat-input {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-}
