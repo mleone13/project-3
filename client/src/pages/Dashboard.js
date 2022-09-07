@@ -13,15 +13,15 @@ const Dashboard = () => {
         },
         {
           name: 'Tammy',
-          url: 'https://www.pexels.com/search/dog/'
+          url: 'https://i.imgur.com/HfAuR39.png'
         },
         {
           name: 'Frank',
-          url: 'https://www.pexels.com/search/dog/'
+          url: 'https://i.imgur.com/HfAuR39.png'
         },
         {
           name: 'Mini',
-          url: 'https://www.pexels.com/search/dog/'
+          url: 'https://i.imgur.com/HfAuR39.png'
         },
         {
           name: 'Zach',
