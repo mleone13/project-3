@@ -31,45 +31,33 @@ const Home = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const loggedIn = Auth.loggedIn();
   const { userData } = useQuery(QUERY_ME);
-  // const [cookies, setCookie, removeCookie] = useCookies(['user'])
-  //const authToken = cookies.AuthToken
 
-  // const httpLink = createHttpLink({
-  //     uri: '/graphql',
-  //   });
-  //   const authLink = setContext((_, { headers }) => {
-  //     const token = localStorage.getItem('id_token');
-  //     return {
-  //       headers: {
-  //         ...headers,
-  //         authorization: token ? `Bearer ${token}` : '',
-  //       },
-  //     };
-  //   });
+  const handleLogout = event => {
+    //event.preventDefault();
+    console.log("You clicked logout")
+    // use try/catch instead of promises to handle errors
+    try {
+      Auth.logout();
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
-  //   const client = new ApolloClient({
-  //     link: authLink.concat(httpLink),
-  //     cache: new InMemoryCache(),
-  //   });
-
-  // const handleClick = () => {
-  //   // if (authToken) {
-  //   //   removeCookie('UserId', cookies.UserId)
-  //   //   removeCookie('AuthToken', cookies.AuthToken)
-  //   //   window.location.reload()
-  //   //   return
-  //   // }
-  //   if (Auth.loggedIn()) {
-  //     return <Onboarding />
-  //   }
-  //   setShowModal(true)
-  //   setIsSignUp(true)
-  // }
+  const handleRedirect = event => {
+    //event.preventDefault();
+    console.log("You clicked redirect")
+    // use try/catch instead of promises to handle errors
+    try {
+      return <Onboarding />
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <div className="overlay">
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Login
+      <Button variant="primary" onClick={loggedIn ? () => { handleLogout() } : () => setModalShow(true)}>
+        {loggedIn ? "Logout" : "Login"}
       </Button>
 
       <Login
@@ -78,23 +66,15 @@ const Home = () => {
       />
       <div className="home">
         <h1 className="primary-title">Find Your Forever Paws®</h1>
-        {/* <button className="primary-button" >
-          {loggedIn ? 'Signout' : 'Create Account'}
-        </button>
-
-
-        {showModal && (
-          <AuthModal setShowModal={setShowModal} isSignUp={isSignUp} />
-        )} */}
-        <Button variant="primary" onClick={() => setShowModal(true)}>
-          Sign Up
+        <Button variant="primary" onClick={loggedIn ? () => { handleRedirect() } : () => setShowModal(true)}>
+          {loggedIn ? 'Go To Dashboard' : 'Create Account'}
         </Button>
         <AuthModal
           show={showModal}
           onHide={() => setShowModal(false)}
         />
       </div>
-    </div>
+    </div >
   )
 }
 export default Home
