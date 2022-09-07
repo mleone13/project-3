@@ -3,12 +3,13 @@ import React, { useState, useEffect } from "react";
 import ChatContainer from "../components/ChatContainer"
 import { useCookies } from "react-cookie";
 import { useQuery, gql, useMutation } from "@apollo/client"
-import { QUERY_USERS } from "../utils/queries";
+import { QUERY_USERS, QUERY_ME } from "../utils/queries";
 import { ADD_FRIEND } from "../utils/mutations"
-
+import Auth from '../utils/auth';
 
 const Dashboard = () => {
   const { loading, error, data } = useQuery(QUERY_USERS)
+  const { dataMe } = useQuery(QUERY_ME)
   const [users, setUsers] = useState([])
   const [addFriend] = useMutation(ADD_FRIEND)
   useEffect(() => {
@@ -17,32 +18,11 @@ const Dashboard = () => {
       setUsers(data.users)
     }
   }, [data])
+  if (Auth.loggedIn) {
 
-  //console.log(data.users)
-  // console.log(users)
-  // console.log(users.username)
-  // const character = [
-  //   {
-  //     name: 'Max',
-  //     url: 'https://i.imgur.com/HfAuR39.png'
-  //   },
-  //   {
-  //     name: 'Tammy',
-  //     url: 'https://i.imgur.com/HfAuR39.png'
-  //   },
-  //   {
-  //     name: 'Frank',
-  //     url: 'https://i.imgur.com/HfAuR39.png'
-  //   },
-  //   {
-  //     name: 'Mini',
-  //     url: 'https://i.imgur.com/HfAuR39.png'
-  //   },
-  //   {
-  //     name: 'Zach',
-  //     url: 'https://i.imgur.com/HfAuR39.png'
-  //   }
-  // ]
+    console.log("hello, i'm logged in")
+  }
+  console.log({ dataMe })
 
 
   const [lastDirection, setLastDirection] = useState()

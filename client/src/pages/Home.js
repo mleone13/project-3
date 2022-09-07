@@ -17,15 +17,6 @@ import Modal from 'react-bootstrap/Modal';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
-
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import {
-//   ApolloClient,
-//   InMemoryCache,
-//   createHttpLink,
-// } from '@apollo/client';
-// import { setContext } from '@apollo/client/link/context';
-
 const Home = () => {
   const [showModal, setShowModal] = useState(false)
   const [isSignUp, setIsSignUp] = useState(true)

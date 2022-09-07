@@ -48,15 +48,22 @@ const AuthModal = (props) => {
 
     // submit form (notice the async!)
     const handleFormSubmit = async event => {
-        event.preventDefault();
+        //event.preventDefault();
         console.log("You clicked submit")
         // use try/catch instead of promises to handle errors
         try {
+            console.log(data)
             const { data } = await addUser({
                 variables: { ...formState }
             });
 
             Auth.login(data.addUser.token);
+            if (Auth.loggedIn) {
+                console.log("logged in!")
+            }
+            else {
+                console.log("not logged in")
+            }
         } catch (e) {
             console.error(e);
         }
@@ -76,7 +83,7 @@ const AuthModal = (props) => {
             </Modal.Header>
             <Modal.Body>
                 <h4>Sign Up Today!</h4>
-                <form onSubmit={handleFormSubmit}>
+                <form onSubmit={e => { (e.preventDefault()); ((handleFormSubmit())) }}>
                     <input
                         type="text"
                         id="email"
