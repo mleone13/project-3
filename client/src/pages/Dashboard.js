@@ -2,21 +2,19 @@ import TinderCard from "react-tinder-card";
 import React, { useState, useEffect } from "react";
 import ChatContainer from "../components/ChatContainer"
 import { useCookies } from "react-cookie";
-import { useQuery, gql } from "@apollo/client"
+import { useQuery, gql, useMutation } from "@apollo/client"
 import { QUERY_USERS } from "../utils/queries";
+import { ADD_FRIEND } from "../utils/mutations"
 
 
 const Dashboard = () => {
   const { loading, error, data } = useQuery(QUERY_USERS)
   const [users, setUsers] = useState([])
-
+  const [addFriend] = useMutation(ADD_FRIEND)
   useEffect(() => {
     if (data) {
 
       setUsers(data.users)
-      console.log(data)
-      console.log(data.users.users)
-      console.log(data.users.username)
     }
   }, [data])
 
@@ -49,15 +47,23 @@ const Dashboard = () => {
 
   const [lastDirection, setLastDirection] = useState()
 
-  const swiped = (direction, nameToDelete) => {
+  const swiped = (direction, nameToDelete, addFriendId) => {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction)
+    if (lastDirection === "right") {
+
+      addFriend({
+        variables:
+          { _id: addFriendId }
+      })
+    }
   }
 
   const outOfFrame = (name) => {
     console.log(name + ' left the screen!')
 
   }
+
   return (
     <div className="dashboard">
       <ChatContainer />
@@ -67,7 +73,7 @@ const Dashboard = () => {
           {users.map((users) =>
             <TinderCard
               className='swipe' key={users._id}
-              onSwipe={(dir) => swiped(dir, users.username)}
+              onSwipe={(dir) => swiped(dir, users.username, users._id)}
               onCardLeftScreen={() => outOfFrame(users.username)}>
               <div
                 className='card'>
