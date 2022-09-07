@@ -10,10 +10,11 @@ import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth';
 import { QUERY_ME } from '../utils/queries'
 import '../index.css';
-import Onboarding from './Onboarding';
+import Dashboard from './Dashboard';
 import Login from './Login';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 
@@ -31,7 +32,7 @@ const Home = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const loggedIn = Auth.loggedIn();
   const { userData } = useQuery(QUERY_ME);
-
+  const navigate = useNavigate();
   const handleLogout = event => {
     //event.preventDefault();
     console.log("You clicked logout")
@@ -48,7 +49,7 @@ const Home = () => {
     console.log("You clicked redirect")
     // use try/catch instead of promises to handle errors
     try {
-      return <Onboarding />
+      navigate('/Dashboard')
     } catch (e) {
       console.error(e);
     }
