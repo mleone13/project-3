@@ -16,32 +16,50 @@ import { onError } from '@apollo/client/link/error'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import OnBoarding from './pages/Onboarding'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
+// const uri = process.env.URI
+// const errorLink = onError(({ graphqlErrors, networkError }) => {
+//     if (graphqlErrors) {
+//         graphqlErrors.map(({ message, location, path }) => {
+//             alert(`Graphql error ${message}`)
+//         });
+//     }
+// })
 
-const errorLink = onError(({ graphqlErrors, networkError }) => {
-    if (graphqlErrors) {
-        graphqlErrors.map(({ message, location, path }) => {
-            alert(`Graphql error ${message}`)
-        });
-    }
-})
+// const link = from([
+//     errorLink,
+//     new HttpLink({ uri })
+// ]);
 
-const link = from([
-    errorLink,
-    new HttpLink({ uri: "http://localhost8000/api" })
-]);
+// const client = new ApolloClient({
+//     cache: new InMemoryCache(),
+//     link: link,
+// });
+const httpLink = createHttpLink({
+    uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+    const token = localStorage.getItem('id_token');
+    return {
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : '',
+        },
+    };
+});
 
 const client = new ApolloClient({
+    link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
-    link: link,
 });
 
 
 const App = () => {
-    const [cookies, setCookie, removeCookie] = useCookies(['user'])
+    // const [cookies, setCookie, removeCookie] = useCookies(['user'])
 
-    const authToken = cookies.AuthToken
+    // const authToken = cookies.AuthToken
 
     // const getUserInfo = () {
 
@@ -49,14 +67,14 @@ const App = () => {
 
     return (
         <ApolloProvider client={client}>
-            <BrowserRouter>
+            <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    {authToken && <Route path="/dashboard" element={<Dashboard />} />}
-                    {authToken && <Route path="/onboarding" element={<OnBoarding />} />}
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/onboarding" element={<OnBoarding />} />
 
                 </Routes>
-            </BrowserRouter>
+            </Router>
         </ApolloProvider>
     )
 }
