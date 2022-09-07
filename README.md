@@ -48,7 +48,7 @@ Sarah Yang, Mary Leone, Sylvester Brandon, and Daniel Ornelas
 
 ## Questions
 
-For additional questions and/or information, please go to the creator's Github at: github.com/, or email one of the above contributors.
+For additional questions and/or information, please go to the creator's Github at: (https://github.com/mleone13/project-3), or email one of the above contributors.
 
 ## License
 
