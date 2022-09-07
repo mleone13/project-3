@@ -6,10 +6,12 @@ import { ADD_USER } from '../../utils/mutations'
 import { useMutation } from '@apollo/client'
 import placeholderPhoto from '../images/dog_logo.png'
 import Auth from '../../utils/auth';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 //import { create } from '../../../../server/models/User'
 
 
-const AuthModal = ({ setShowModal, isSignUp }) => {
+const AuthModal = (props) => {
     // const [email, setEmail] = useState(null)
     // const [password, setPassword] = useState(null)
     // const [confirmPassword, setConfirmPassword] = useState(null)
@@ -39,9 +41,9 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         });
     };
 
-    const handleClick = () => {
-        setShowModal(false)
-    }
+    // const handleClick = () => {
+    //     setShowModal(false)
+    // }
 
 
     // submit form (notice the async!)
@@ -61,8 +63,13 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
     };
 
     return (
-        <div className="auth-modal">
-            <div className="close-icon" onClick={handleClick}>ⓧ</div>
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            {/* <div className="close-icon" onClick={handleClick}>ⓧ</div>
 
             <h2>{isSignUp ? 'CREATE ACCOUNT' : 'LOG IN'}</h2>
             <p>By Signing Up, you agree to our terms. Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
@@ -140,10 +147,97 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
                 />
                 <input className="secondary-button" type="submit" />
                 <p>{error}</p>
-            </form>
+            </form> */}
+
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    The most pup-ular dog around
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <h4>Sign Up Today!</h4>
+                <form onSubmit={handleFormSubmit}>
+                    <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        placeholder="email"
+                        required={true}
+                        value={formState.email}
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        id="password"
+                        name="password"
+                        placeholder="password"
+                        required={true}
+                        value={formState.password}
+                        onChange={handleChange}
+                    />
+                    {props.isSignUp && <input
+                        type="text"
+                        id="password-check"
+                        name="password-check"
+                        placeholder="confirm password"
+                        required={true}
+                        onChange={handleChange}
+                    />}
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="username"
+                        required={true}
+                        value={formState.username}
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        id="aboutMe"
+                        name="aboutMe"
+                        placeholder="About Me"
+                        required={true}
+                        value={formState.aboutMe}
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        placeholder="age"
+                        required={true}
+                        value={formState.age}
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        id="bestFeature"
+                        name="bestFeature"
+                        placeholder="My Best Feature..."
+                        required={true}
+                        value={formState.bestFeature}
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        id="lookingFor"
+                        name="lookingFor"
+                        placeholder="I'm Looking For.."
+                        required={true}
+                        value={formState.lookingFor}
+                        onChange={handleChange}
+                    />
+                    <input className="secondary-button" type="submit" />
+                    <p>{error}</p>
+                </form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={props.onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
 
 
-        </div>
     )
 }
 export default AuthModal

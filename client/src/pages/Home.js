@@ -26,7 +26,7 @@ import Modal from 'react-bootstrap/Modal';
 // import { setContext } from '@apollo/client/link/context';
 
 const Home = () => {
-  //const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   const [isSignUp, setIsSignUp] = useState(true)
   const [modalShow, setModalShow] = React.useState(false);
   const loggedIn = Auth.loggedIn();
@@ -69,7 +69,7 @@ const Home = () => {
   return (
     <div className="overlay">
       <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch vertically centered modal/Login
+        Login
       </Button>
 
       <Login
@@ -78,14 +78,21 @@ const Home = () => {
       />
       <div className="home">
         <h1 className="primary-title">Find Your Forever Paws®</h1>
-        <button className="primary-button" >
+        {/* <button className="primary-button" >
           {loggedIn ? 'Signout' : 'Create Account'}
         </button>
 
 
-        {/* {showModal && (
+        {showModal && (
           <AuthModal setShowModal={setShowModal} isSignUp={isSignUp} />
         )} */}
+        <Button variant="primary" onClick={() => setShowModal(true)}>
+          Sign Up
+        </Button>
+        <AuthModal
+          show={showModal}
+          onHide={() => setShowModal(false)}
+        />
       </div>
     </div>
   )
