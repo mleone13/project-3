@@ -7,8 +7,11 @@ import {
     InMemoryCache,
     ApolloProvider,
     createHttpLink,
+    from,
+    HttpLink
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { onError } from '@apollo/client/link/error'
 
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
@@ -16,20 +19,45 @@ import OnBoarding from './pages/Onboarding'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 
+const errorLink = onError(({ graphqlErrors, networkError }) => {
+    if (graphqlErrors) {
+        graphqlErrors.map(({ message, location, path }) => {
+            alert(`Graphql error ${message}`)
+        });
+    }
+})
+
+const link = from([
+    errorLink,
+    new HttpLink({ uri: "http://localhost8000/api" })
+]);
+
+const client = new ApolloClient({
+    cache: new InMemoryCache(),
+    link: link,
+});
+
+
 const App = () => {
     const [cookies, setCookie, removeCookie] = useCookies(['user'])
 
     const authToken = cookies.AuthToken
 
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                {authToken && <Route path="/dashboard" element={<Dashboard />} />}
-                {authToken && <Route path="/onboarding" element={<OnBoarding />} />}
+    // const getUserInfo = () {
 
-            </Routes>
-        </BrowserRouter>
+    // }
+
+    return (
+        <ApolloProvider client={client}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    {authToken && <Route path="/dashboard" element={<Dashboard />} />}
+                    {authToken && <Route path="/onboarding" element={<OnBoarding />} />}
+
+                </Routes>
+            </BrowserRouter>
+        </ApolloProvider>
     )
 }
 

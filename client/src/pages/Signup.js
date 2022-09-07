@@ -31,7 +31,7 @@ const Signup = () => {
     console.log('submitted')
     e.preventDefault()
     try {
-      const response = await axios.put('http://localhost:8000/user', { formData })
+      const response = await axios.put('http://localhost:8000/deep-thoughts', { formData })
       console.log(response)
       const success = response.status === 200
       if (success) navigate('/dashboard')
@@ -56,21 +56,22 @@ const Signup = () => {
     }))
   }
 
-  //   // submit form
-  //   const handleFormSubmit = async (event) => {
-  //     event.preventDefault();
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-  // try {
-  //   const { data } = await addUser({
-  //     variables: { ...useState },
-  //   });
+    try {
+      const { data } = await addUser({
+        variables: { ...useState },
+      });
 
-  //         console.log (data) 
+      console.log(data)
 
-  //         Auth.login(data.addUser.token);
-  // } catch (e) {
-  //   console.error(e);
-  // }
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
 
   return (
@@ -87,7 +88,7 @@ const Signup = () => {
           <div className="card">
             <h4 className="card-header">Sign Up</h4>
             <div className="card-body">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleFormSubmit}>
                 <section>
                   <label htmlFor="first_name">First Name</label>
                   <input
@@ -145,4 +146,4 @@ const Signup = () => {
   );
 };
 
-// export default Signup;
+export default Signup;
