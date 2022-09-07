@@ -2,6 +2,47 @@ import Nav from '../components/NavTab'
 import AuthModal from "../components/AuthModal"
 import {useState} from 'react'
 import {useCookies} from "react-cookie"
+import FriendList from '../components/FriendList';
+import NavTab from '../components/NavTab';
+import AuthModal from '../components/AuthModal';
+import Header from '../components/Header/index'
+import { useQuery } from '@apollo/client';
+import { QUERY_USERS } from '../utils/queries';
+
+
+import '../index.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+
+// import Home from './pages/Home';
+// import NoMatch from './pages/NoMatch';
+// import Login from './pages/Login';
+// import Profile from './pages/Profile';
+// import Signup from './pages/Signup';
+// import Dashboard from './pages/Dashboard';
+// import AuthModal from './components/AuthModal';
+// import Header from './components/Header';
+// import Onboarding from './pages/Onboarding';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const Home = () => {
     const [showModal, setShowModal] = useState(false)
@@ -9,6 +50,24 @@ const Home = () => {
     const [cookies, setCookie, removeCookie] = useCookies(['user'])
     const authToken = cookies.AuthToken
 
+    const httpLink = createHttpLink({
+        uri: '/graphql',
+      });
+      const authLink = setContext((_, { headers }) => {
+        const token = localStorage.getItem('id_token');
+        return {
+          headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : '',
+          },
+        };
+      });
+
+      const client = new ApolloClient({
+        link: authLink.concat(httpLink),
+        cache: new InMemoryCache(),
+      });
+    
     const handleClick = () => {
         if (authToken) {
             removeCookie('UserId', cookies.UserId)
@@ -30,7 +89,7 @@ const Home = () => {
                 setIsSignUp={setIsSignUp}
             />
             <div className="home">
-                <h1 className="primary-title">Swipe Right®</h1>
+                <h1 className="primary-title">Find Your Forever Paws®</h1>
                 <button className="primary-button" onClick={handleClick}>
                     {authToken ? 'Signout' : 'Create Account'}
                 </button>

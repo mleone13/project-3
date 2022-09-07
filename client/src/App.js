@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+=======
+
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+>>>>>>> 7b8579424693c436f9e4cc93e6951b216d17c540
 
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
