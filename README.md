@@ -42,6 +42,9 @@ Sarah Yang, Mary Leone, Sylvester Brandon, and Daniel Ornelas
 
 ## Screenshot
 
+![image](https://user-images.githubusercontent.com/74919680/188968451-21e06b3e-d9e8-426a-8604-2ed34c6dab15.png)
+
+
 ## Questions
 
 For additional questions and/or information, please go to the creator's Github at: github.com/, or email one of the above contributors.
