@@ -8,10 +8,21 @@ import { QUERY_USERS } from "../utils/queries";
 
 const Dashboard = () => {
   const { loading, error, data } = useQuery(QUERY_USERS)
+  const [users, setUsers] = useState([])
 
   useEffect(() => {
-    console.log(data)
+    if (data) {
+
+      setUsers(data.users)
+      console.log(data)
+      console.log(data.users.users)
+      console.log(data.users.username)
+    }
   }, [data])
+
+  //console.log(data.users)
+  // console.log(users)
+  // console.log(users.username)
   // const character = [
   //   {
   //     name: 'Max',
@@ -53,20 +64,27 @@ const Dashboard = () => {
       <div className="swiper-container">
         <div className="card-container">
 
-          {/* {character.map((character) =>
+          {users.map((users) =>
             <TinderCard
-              className='swipe' key={character.name}
-              onSwipe={(dir) => swiped(dir, character.name)}
-              onCardLeftScreen={() => outOfFrame(character.name)}>
-              <div style={{ backgroundImage: 'url(' + character.url + ')' }}
+              className='swipe' key={users._id}
+              onSwipe={(dir) => swiped(dir, users.username)}
+              onCardLeftScreen={() => outOfFrame(users.username)}>
+              <div
                 className='card'>
-                <h3>{character.name}</h3>
+                <h3>{users.username}</h3>
+                <img src={users.img} />
+                <div>
+                  <h4>Age: {users.age}</h4>
+                  <h4>{users.aboutMe}</h4>
+                  <h4>My best feature: {users.bestFeature}</h4>
+                  <h4>Looking for someone: {users.lookingFor}</h4>
+                </div>
               </div>
             </TinderCard>
-          )} */}
+          )}
 
           <div className="swipe-info">
-            {lastDirection ? <p>You swiped {lastDirection}</p> : <p />}
+            {lastDirection ? <p>You swiped {lastDirection} </p> : <p />}
           </div>
 
         </div>
