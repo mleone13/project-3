@@ -8,11 +8,11 @@
 -   Daniel :danielornelas01@yahoo.com
 
 ## Description:
+Pup or Pass is a place where our dog users can find their true love match with other dogs
 
 ## Table of Contents
 
 -   [Installation](#installation)
--   [Usage](#usage)
 -   [Contributors](#contributors)
 -   [Website](#website)
 -   [Screenshot](#screenshot)
@@ -23,19 +23,16 @@
 
 -   React
 -   Graph QL
--
+-   Apollo
 -   dotenv
--
+-   Axios
 -   bcrypt
 -   CSS
--
--
+-   Bootstrap
+-   Mongoose
+-   React-Tinder-Card
+- Json Web Token
 
-## Usage
-
--
--
--
 
 # Contributors
 
