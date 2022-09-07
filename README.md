@@ -31,7 +31,7 @@ Pup or Pass is a place where our dog users can find their true love match with o
 -   Bootstrap
 -   Mongoose
 -   React-Tinder-Card
-- Json Web Token
+-   Json Web Token
 
 
 # Contributors
