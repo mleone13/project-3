@@ -9,22 +9,32 @@ const Dashboard = () => {
     const character = [
         {
           name: 'Max',
+          age: '2 Years of Age',
+          aboutme: 'Young, Wild, and Free',
           url: 'https://i.imgur.com/HfAuR39.png'
         },
         {
           name: 'Tammy',
+          age: '3 Years of Age',
+          aboutme: 'Older & Wiser!',
           url: 'https://www.pexels.com/search/dog/'
         },
         {
           name: 'Frank',
+          age: '1 Year of Age',
+          aboutme: 'Looking for Love and Puppy Chow!',
           url: 'https://www.pexels.com/search/dog/'
         },
         {
           name: 'Mini',
+          age: '2 Years of Age',
+          aboutme: 'Young and Full of Energy!',
           url: 'https://www.pexels.com/search/dog/'
         },
         {
           name: 'Zach',
+          age: '3 Years of Age',
+          aboutme: 'I am a distinguished pup that enjoys long walks!',
           url: 'https://i.imgur.com/HfAuR39.png'
         }
       ]
@@ -49,12 +59,15 @@ const Dashboard = () => {
 
         {character.map((character) =>
           <TinderCard 
-          className='swipe' key={character.name} 
-          onSwipe={(dir) => swiped(dir, character.name)} 
-          onCardLeftScreen={() => outOfFrame(character.name)}>
+          className='swipe' key={character.name}
+          onSwipe={(dir) => swiped(dir, character.name, character.age, character.aboutme)} 
+          onCardLeftScreen={() => outOfFrame(character.name, character.age, character.aboutme)}> 
           <div style={{ backgroundImage: 'url(' + character.url + ')' }} 
             className='card'>
               <h3>{character.name}</h3>
+              <h4>{character.age}</h4>
+              <h5>{character.aboutme}</h5>
+
             </div>
           </TinderCard>
         )}
